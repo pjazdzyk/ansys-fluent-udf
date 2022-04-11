@@ -1,16 +1,16 @@
-/* UDF for specifying the wind profile (horizontal velocity and tke & tdr)       */
-/* Assumes:                                                                      */
-/* Z direction is upwards from the ground                                        */
-/* Z > 0 for entire inlet area                                                   */
-/* This UDF is meant to use in pressure load simulations.						 */
-/* Equations are based on EN 1991-1-4:2005										 */
+/* UDF for specifying the wind profile (horizontal velocity and tke & tdr)*/
+/* Assumes:*/
+/* Z direction is upwards from the ground*/
+/* Z > 0 for entire inlet area*/
+/* This UDF is meant to use in pressure load simulations.*/
+/* Equations are based on EN 1991-1-4:2005*/
 
 #include "udf.h"
 
-/* UDF MODIFIED FOR OFF GRID NORTH 				*/
-/* Assumes local North is +ve Y-AXIS            */
-/* Assumes local East is +ve X-AXIS             */
-/* Up is +ve z									*/
+/* UDF MODIFIED FOR OFF GRID NORTH*/
+/* Assumes local North is +ve Y-AXIS*/
+/* Assumes local East is +ve X-AXIS*/
+/* Up is +ve z*/
 /* TN_CORR is the correction for True North to Plant North (clockwise positive) */
 
 /*
@@ -25,37 +25,37 @@ z0[m] / zmin[m] / Category
 
 
 // DEFAULTS & CONSTANTS
-#define PI         3.1415927					/* Constant (PI)									*/
-#define K		   0.42							/* von Karmans constant								*/
-#define z0II	   0.05							/* terrain roughness heigh for second category [m]  */	
-#define Cu		   0.09							/* turbulence model constant*/	
+#define PI         3.1415927					/* Constant (PI)*/
+#define K		   0.42					/* von Karmans constant*/
+#define z0II	   0.05						/* terrain roughness heigh for second category [m]*/	
+#define Cu		   0.09					/* turbulence model constant*/	
 
 // WIND DIRECTION PROPERTIES
 #define TN_CORR   0.0           				/* Degrees Correction for True North to Plant North (clockwise positive) default = 0*/
-#define WIND_DIR  270.0              			/* Wind Direction in clockwise degrees from True North  */
-												/*South wind means: it blows from south to north*/
-												/* 180.0 = North Wind */
-												/* 135.0 = North West Wind */
-												/* 270.0 = East Wind */
-												/*   0.0 = South Wind */
-												/*  45.0 = South West Wind */
-												/*  90.0 = West Wind */
+#define WIND_DIR  270.0              				/* Wind Direction in clockwise degrees from True North*/
+								/*South wind means: it blows from south to north*/
+								/* 180.0 = North Wind */
+								/* 135.0 = North West Wind */
+								/* 270.0 = East Wind */
+								/*   0.0 = South Wind */
+								/*  45.0 = South West Wind */
+								/*  90.0 = West Wind */
 
 // DESIGN TERRAIN PROPERTIES
-#define ZGROUND    0.000						/* Z location of the ground default = 0 [m]  */
-#define z0		   0.003						/* arodynamic terrain roughness lengt defined in table 4.1 [m] */
-#define zMin	   1.000						/* minimum height defined in table  4.1 [m]*/	
-#define zoneH	   400.0						/* Maximum computational domain height*/
+#define ZGROUND    0.000					/* Z location of the ground default = 0 [m]*/
+#define z0		   0.003				/* arodynamic terrain roughness lengt defined in table 4.1 [m] */
+#define zMin	   1.000					/* minimum height defined in table  4.1 [m]*/	
+#define zoneH	   400.0					/* Maximum computational domain height*/
 
 // DESIGN WIND PROPERTY
-#define vB0		   22.0							/* basic wind velocity, at the reference height of z=10m [m/s] */
-#define cDir	   1.00							/* directional factor -> see national annex, default is 1*/		
-#define cSeason	   1.00							/* seasonal factor -> see national annex, default is 1*/	 
-#define c0z		   1.00							/* oreography factor, taken as 1 unless otherwise specified in 4.3.3*/	
-#define kI		   1.00							/* turbulence factor, default is 1*/	 
+#define vB0		   22.0					/* basic wind velocity, at the reference height of z=10m [m/s] */
+#define cDir	   1.00						/* directional factor -> see national annex, default is 1*/		
+#define cSeason	   1.00						/* seasonal factor -> see national annex, default is 1*/	 
+#define c0z		   1.00					/* oreography factor, taken as 1 unless otherwise specified in 4.3.3*/	
+#define kI		   1.00					/* turbulence factor, default is 1*/	 
 
 // CALCULATION FIELDS
-real theta = (WIND_DIR + TN_CORR) * PI / 180;	/* angle for wind vectors calculation*/
+real theta = (WIND_DIR + TN_CORR) * PI / 180;			/* angle for wind vectors calculation*/
 real vB = vB0 * cDir * cSeason;					/* design velocity, at the reference height of z=10m [m/s] */
 
 extern Domain* domain;
@@ -140,8 +140,8 @@ DEFINE_PROFILE(x_vel_profile, thread, position)
 	{
 		F_CENTROID(x, f, thread);
 		zloc = x[2] - ZGROUND;
-		vel = calcVmz(zloc);								 /*wind velocity at height z*/
-		xv = sin(theta) * vel;								 /*CA wind veloicty: x compound*/
+		vel = calcVmz(zloc);								/*wind velocity at height z*/
+		xv = sin(theta) * vel;								/*CA wind veloicty: x compound*/
 		F_PROFILE(f, thread, position) = xv;
 	}
 	end_f_loop(f, thread)
@@ -157,8 +157,8 @@ DEFINE_PROFILE(y_vel_profile, thread, position)
 	{
 		F_CENTROID(x, f, thread);
 		zloc = x[2] - ZGROUND;
-		vel = calcVmz(zloc);									 /*wind velocity at height z*/
-		yv = cos(theta) * vel;									 /*CA wind veloicty: y compound*/
+		vel = calcVmz(zloc);								/*wind velocity at height z*/
+		yv = cos(theta) * vel;								/*CA wind veloicty: y compound*/
 		F_PROFILE(f, thread, position) = yv;
 	}
 	end_f_loop(f, thread)
