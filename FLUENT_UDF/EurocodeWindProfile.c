@@ -1,23 +1,13 @@
-/* UDF for specifying the wind profile (horizontal velocity and tke & tdr)*/
-/* Assumes:*/
-/* Z direction is upwards from the ground*/
-/* Z > 0 for entire inlet area*/
-/* This UDF is meant to use in pressure load simulations.*/
-/* Equations are based on EN 1991-1-4:2005*/
+﻿#include "udf.h"
 
-#include "udf.h"
-
-/* UDF MODIFIED FOR OFF GRID NORTH*/
-/* Assumes local North is +ve Y-AXIS*/
-/* Assumes local East is +ve X-AXIS*/
-/* Up is +ve z*/
 /* TN_CORR is the correction for True North to Plant North (clockwise positive) */
+/* AUTHOR: Piotr Jażdżyk / info@synerset.com / www.synerset.com */
 
 /*
 z0[m] - aerodynamic terrain roughness length
 z0[m] / zmin[m] / Category
-0.003 / 1  	 / Category 0 	� Sea or coastal area exposed to open sea 0.003 1
-0.01  / 1  	 / Category I 	� Lakes or flat and horizontal area with negligible vegetation and without obstacles
+0.003 / 1  	 / Category 0 	– Sea or coastal area exposed to open sea 0.003 1
+0.01  / 1  	 / Category I 	– Lakes or flat and horizontal area with negligible vegetation and without obstacles
 0.05  / 2  	 / Category II	- Area with low vegetation such as grass and isolated obstacles (trees, buildings) with separations of at least 20 obstacle heights
 0.3   / 5  	 / Category III - Area with regular cover of vegetation or buildings or with isolated obstacles with separations of maximum 20 obstacle heights
 1.0   / 10   / Category IV	- Area in which at least 15% of the surface is covered with buildings and their average height exceeds 15 m
