@@ -32,7 +32,7 @@ UDF is may be used as velocity inlet BC for any most large scale aerodynamic win
 3. Determine your terrain class based on table 4.1 in Eurocode
 4. Adjust fields in UDF file accordingly:
 ```                                                     
-#define WIND_DIR	270.0	<- wind direction here                                                            
+#define WIND_DIR	270.0	<- wind direction in m/s at height of 10m                                                         
 #define z0		0.003	<- z0 value based on terrain category from table 4.1                 
 #define zMin		1.000	<- zMin value based on terrain category from table 4.1                                      
 #define zoneH		400.0	<- your domain height in m                             
@@ -43,16 +43,6 @@ UDF is may be used as velocity inlet BC for any most large scale aerodynamic win
 6. Hook x_vel_profile as vx, and y_vel_profile as vy in each velicity inlet BC.
 7. Leave at least one BC as pressure outlet.
 8. Use printAll() method, to check calculated values.
-
-Table 4.1:
-z0[m]	zmin[m] 	Category
-- - - - - - - - - - - - - 
-0.003	1		Category 0	– Sea or coastal area exposed to open sea 0.003 1
-0.01	1		Category I	– Lakes or flat and horizontal area with negligible vegetation and without obstacles
-0.05	2		Category II	- Area with low vegetation such as grass and isolated obstacles (trees, buildings) with separations of at least 20 obstacle heights
-0.3	5		Category III	- Area with regular cover of vegetation or buildings or with isolated obstacles with separations of maximum 20 obstacle heights
-1.0	10		Category IV	- Area in which at least 15% of the surface is covered with buildings and their average height exceeds 15 m
-
 
 ### LICENSE
 Free for academic and educational use.
