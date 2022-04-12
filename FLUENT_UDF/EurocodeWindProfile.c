@@ -5,20 +5,20 @@
 
 /*
 z0[m] - aerodynamic terrain roughness length
-z0[m] / zmin[m] / Category
+z0[m] / zmin[m]  / Category
 0.003 / 1  	 / Category 0 	– Sea or coastal area exposed to open sea 0.003 1
 0.01  / 1  	 / Category I 	– Lakes or flat and horizontal area with negligible vegetation and without obstacles
 0.05  / 2  	 / Category II	- Area with low vegetation such as grass and isolated obstacles (trees, buildings) with separations of at least 20 obstacle heights
 0.3   / 5  	 / Category III - Area with regular cover of vegetation or buildings or with isolated obstacles with separations of maximum 20 obstacle heights
-1.0   / 10   / Category IV	- Area in which at least 15% of the surface is covered with buildings and their average height exceeds 15 m
+1.0   / 10   	 / Category IV	- Area in which at least 15% of the surface is covered with buildings and their average height exceeds 15 m
 */
 
 
 // DEFAULTS & CONSTANTS
 #define PI         3.1415927					/* Constant (PI)*/
-#define K		   0.42					/* von Karmans constant*/
+#define K	   0.42						/* von Karmans constant*/
 #define z0II	   0.05						/* terrain roughness heigh for second category [m]*/	
-#define Cu		   0.09					/* turbulence model constant*/	
+#define Cu	   0.09						/* turbulence model constant*/	
 
 // WIND DIRECTION PROPERTIES
 #define TN_CORR   0.0           				/* Degrees Correction for True North to Plant North (clockwise positive) default = 0*/
@@ -33,16 +33,16 @@ z0[m] / zmin[m] / Category
 
 // DESIGN TERRAIN PROPERTIES
 #define ZGROUND    0.000					/* Z location of the ground default = 0 [m]*/
-#define z0		   0.003				/* arodynamic terrain roughness lengt defined in table 4.1 [m] */
+#define z0	   0.003					/* arodynamic terrain roughness lengt defined in table 4.1 [m] */
 #define zMin	   1.000					/* minimum height defined in table  4.1 [m]*/	
 #define zoneH	   400.0					/* Maximum computational domain height*/
 
 // DESIGN WIND PROPERTY
-#define vB0		   22.0					/* basic wind velocity, at the reference height of z=10m [m/s] */
+#define vB0	   22.0						/* basic wind velocity, at the reference height of z=10m [m/s] */
 #define cDir	   1.00						/* directional factor -> see national annex, default is 1*/		
 #define cSeason	   1.00						/* seasonal factor -> see national annex, default is 1*/	 
-#define c0z		   1.00					/* oreography factor, taken as 1 unless otherwise specified in 4.3.3*/	
-#define kI		   1.00					/* turbulence factor, default is 1*/	 
+#define c0z	   1.00						/* oreography factor, taken as 1 unless otherwise specified in 4.3.3*/	
+#define kI	   1.00						/* turbulence factor, default is 1*/	 
 
 // CALCULATION FIELDS
 real theta = (WIND_DIR + TN_CORR) * PI / 180;			/* angle for wind vectors calculation*/
