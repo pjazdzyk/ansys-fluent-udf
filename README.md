@@ -7,6 +7,7 @@
 > DATE: 2022.04.10<br>
 > LAST UPDATE: 2022.06.17<br>
 
+
 ---
 [WIND LOG PROFILE](#logharithmic-wind-profile) | [FIRE CURVE](#fire-curve) | [LICENSE](#license) | 
 ---
@@ -36,11 +37,10 @@ USER GUIDE:
 4. Adjust fields in UDF file accordingly:
 ```                                                     
 #define WIND_DIR 270.0	<- wind direction in m/s at height of 10m                                                         
-#define z0 0.003	<- z0 value based on terrain category from table 4.1                 
-#define zMin 1.000	<- zMin value based on terrain category from table 4.1                                      
+#define z0 0.003	<- z0 value based on terrain category from table 4.1 in m                 
+#define zMin 1.000	<- zMin value based on terrain category from table 4.1 in m                                      
 #define zoneH 400.0	<- your domain height in m                             
-#define vB0 22.0	<- velocity at reference height of 10m                                                        
-
+#define vB0 22.0	<- velocity at reference height of 10m in m/s                                                       
 ```
 5. Under velocity inlet BC, select velocity specified in cartesian coordinate system: vx, by, vz.
 6. Hook x_vel_profile as vx, and y_vel_profile as vy in each velicity inlet BC.
@@ -63,7 +63,6 @@ USER GUIDE:
 #define SRC_VOL 10.5      <- source geometry volume in m3
 #define SOOT_Y 0.12       <- soot yield in kg.soot/kg.fuel
 #define HC 25.0           <- burning material heat of combustion in MJ/kg                                                    
-
 ```
 
 Please dont forget to contact me if you spot any parsing errors or convergence issues. Thanks.
