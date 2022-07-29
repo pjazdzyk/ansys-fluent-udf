@@ -1,12 +1,10 @@
 ## ANSYS FLUENT: USER DEFINED FUNCTIONS (UDF) 
 
-> AUTHOR: <b>Piotr Jażdżyk</b> <br>
-> CONTACT: piotr.jazdzyk@o2.pl<br>
-> LINKEDIN: https://www.linkedin.com/in/pjazdzyk/<br>
 > VERSION: 1.0.1 <br>
 > DATE: 2022.04.10<br>
 > LAST UPDATE: 2022.06.17<br>
-
+> AUTHOR: <b>Piotr Jażdżyk</b> <br>
+> LINKEDIN: https://pl.linkedin.com/in/pjazdzyk/en<br>
 
 ---
 [WIND LOG PROFILE](#logharithmic-wind-profile) | [FIRE CURVE](#fire-curve) | [LICENSE](#license) | 
@@ -48,7 +46,7 @@ USER GUIDE:
 8. Use printAll() method, to check calculated values.
 
 ### FIRE CURVE
-FILENAME: FireCurve.c
+FILENAME: FireCurve.c <br>
 Interpreted type UDF for Ansys Fluent SHEVS simulations. This UDF implements a source of heat and soot generation for a volumetric source defined within a computational domain. This macro defines a time-dependent increase of smoke and heat generation based on t^2 function and fire growth coefficient. Source emissions are increased up to the defined HRR_MAX value, from where heat release is constant in time.
 
 USER GUIDE:

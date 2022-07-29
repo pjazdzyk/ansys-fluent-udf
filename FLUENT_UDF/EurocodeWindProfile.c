@@ -7,8 +7,7 @@ Ansys Fluent must be used for use or testing.
 UDF for simulation ABL (atmospheric boundary layer) as logaritmic wind profile, based on Eurocode EN 1991-1-4.
 
 AUTHOR: Piotr Jażdżyk
-Contact: piotr.jazdzyk@o2.pl
-Linkedin: https://www.linkedin.com/in/pjazdzyk/
+Linkedin: https://pl.linkedin.com/in/pjazdzyk/en
 
 Table 4.1 from Eurocode Eurocode EN 1991-1-4:
 z0[m] - aerodynamic terrain roughness length

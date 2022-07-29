@@ -2,13 +2,12 @@
 
 /*
 THIS IS ANSYS FLUENT UDF FILE. It is a macro, based on C language, but some of the syntax rules are different. It will not compile in clang.
-Ansys Fluent must be used for use or testing.
+Ansys Fluent must be used for testing.
 
 UDF for simple t^square fire curve, for heat and smoke generation from source, based on Mulholland formula.
 
 AUTHOR: Piotr Jażdżyk
-Contact: piotr.jazdzyk@o2.pl
-Linkedin: https://www.linkedin.com/in/pjazdzyk/
+Linkedin: https://pl.linkedin.com/in/pjazdzyk/en
 */
 
 // REQUIRED USER INPUT
